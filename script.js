@@ -219,6 +219,7 @@ formDiscount.addEventListener("submit", (event) => {
       localStorage.clear();
       alert.textContent = `alert("Ré-initialisation terminé")`;
       errorDiscount.textContent = "Code inconnu";
+      numberCount.textContent = "Aucune Commande";
     }, 1000);
     // END vider le cache
   } else {
@@ -234,10 +235,14 @@ formDiscount.addEventListener("submit", (event) => {
 const ticketDay = JSON.parse(localStorage.getItem("ticketDay")) || [];
 let count = ticketDay.length;
 
+count
+  ? (numberCount.textContent = `Commande numéro: ${count}`)
+  : (numberCount.textContent = "Aucune Commande");
+
 btnCheckout.addEventListener("click", () => {
   if (order.lines.length !== 0) {
     // incrémentation ticket
-    count += 1;
+    count += order.lines.length;
     numberCount.textContent = `Commande numéro: ${count}`;
     title.textContent = "Ticket";
     errorDiscount.textContent = "";
