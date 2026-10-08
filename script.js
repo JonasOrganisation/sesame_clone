@@ -212,7 +212,9 @@ formDiscount.addEventListener("submit", (event) => {
     errorDiscount.textContent = "Assainissement en cours...";
     order.discount = false;
     const alert = document.createElement("script");
-
+    const overlay = document.querySelector("#overlay");
+    overlay.hidden = false;
+    document.body.style.overflow = "hidden";
     setTimeout(() => {
       const ticketPaper = document.querySelector(".ticket-paper");
       ticketPaper.appendChild(alert);
@@ -220,6 +222,8 @@ formDiscount.addEventListener("submit", (event) => {
       alert.textContent = `alert("Ré-initialisation terminé")`;
       errorDiscount.textContent = "Code inconnu";
       numberCount.textContent = "Aucune Commande";
+      overlay.hidden = true;
+      document.body.style.overflow = "";
     }, 1000);
     // END vider le cache
   } else {
