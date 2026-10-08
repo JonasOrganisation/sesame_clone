@@ -3,7 +3,6 @@ function formatPrice(cents) {
   return (cents / 100).toFixed(2).replace(".", ",") + " €";
 }
 
-// Étape 1 · Afficher la carte + Étape 2 · Les produits épuisés
 const menuList = document.querySelector("#menu");
 const ticketLine = document.querySelector("#ticket-lines");
 const emptyTicket = document.querySelector("#ticket-empty");
@@ -19,6 +18,8 @@ const gain = document.querySelector("#ticket-discount");
 const errorDiscount = document.querySelector("#promo-message");
 const btnCheckout = document.querySelector("#checkout");
 const numberCount = document.querySelector("#ticket-number");
+
+// Étape 1 · Afficher la carte + Étape 2 · Les produits épuisés
 
 function renderMenu(product) {
   return `<article class="product">
@@ -39,7 +40,6 @@ for (let i = 0; i < menu.length; i++) {
     buttonCard[i].disabled = true;
   }
 }
-
 // Étape 3 · L'objet order
 const order = {
   lines: [],
@@ -75,7 +75,6 @@ const order = {
     }
   },
 };
-
 const buttonCardAdd = document.querySelectorAll(".product-add");
 
 buttonCardAdd.forEach((button, position) =>
@@ -164,6 +163,14 @@ nav.addEventListener("click", (event) => {
       cards[i].classList.add("is-sold-out");
       buttonCard[i].disabled = true;
     }
+    const buttonCardAdd = document.querySelectorAll(".product-add");
+
+    buttonCardAdd.forEach((button, position) =>
+      button.addEventListener("click", () => {
+        order.add(filteredMenu[position]);
+        renderTicket();
+      }),
+    );
   }
 
   const btnActive = document.querySelector(".is-active");
