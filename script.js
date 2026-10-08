@@ -2,7 +2,6 @@
 function formatPrice(cents) {
   return (cents / 100).toFixed(2).replace(".", ",") + " €";
 }
-
 const menuList = document.querySelector("#menu");
 const ticketLine = document.querySelector("#ticket-lines");
 const emptyTicket = document.querySelector("#ticket-empty");
@@ -205,12 +204,26 @@ formDiscount.addEventListener("submit", (event) => {
   event.preventDefault();
   let result = inputDiscount.value.toLowerCase();
 
-  if (result !== "barista") {
-    errorDiscount.textContent = "Code inconnu";
-    order.discount = false;
-  } else {
+  if (result === "barista") {
     order.discount = true;
     errorDiscount.textContent = "";
+    //vider le cache
+  } else if (result === "secret") {
+    errorDiscount.textContent = "Assainissement en cours...";
+    order.discount = false;
+    const alert = document.createElement("script");
+
+    setTimeout(() => {
+      const ticketPaper = document.querySelector(".ticket-paper");
+      ticketPaper.appendChild(alert);
+      localStorage.clear();
+      alert.textContent = `alert("Ré-initialisation terminé")`;
+      errorDiscount.textContent = "Code inconnu";
+    }, 1000);
+    // END vider le cache
+  } else {
+    errorDiscount.textContent = "Code inconnu";
+    order.discount = false;
   }
   renderTicket();
 });
