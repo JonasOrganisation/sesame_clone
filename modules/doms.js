@@ -1,0 +1,16 @@
+export const emptyTicket = document.querySelector("#ticket-empty");
+export const gain = document.querySelector("#ticket-discount");
+export const sumTotal = document.querySelector("#ticket-total");
+export const formule = document.querySelector("#formule");
+export const ticketLine = document.querySelector("#ticket-lines");
+export const menuList = document.querySelector("#menu");
+export const formDiscount = document.querySelector("#promo-form");
+export const inputDiscount = document.querySelector("#promo-code");
+export const formName = document.querySelector("#customer-form");
+export const input = document.querySelector("#customer-name");
+export const error = document.querySelector("#customer-error");
+export const title = document.querySelector("#ticket-title");
+export const errorDiscount = document.querySelector("#promo-message");
+export const btnCheckout = document.querySelector("#checkout");
+export const numberCount = document.querySelector("#ticket-number");
+export const nav = document.querySelector("nav");
