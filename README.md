@@ -1,6 +1,4 @@
-**En ligne :** https://jonasorganisation.github.io/sesame_clone/
- 
-# Sésame, ouvre-toi ☕
+ # Sésame, ouvre-toi ☕
 
 
 Ta mission : coder un **logiciel d'encaissement** pour le Sésame. Objectif : le barista touche un produit, le produit part sur le ticket et le total se calcule tout seul.
